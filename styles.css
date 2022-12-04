@@ -1,0 +1,20 @@
+.hero {
+  background-color: #1F2937;
+}
+
+.hero-main-text {
+  color: #f9faf8;
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.hero-secondary-text,
+.header-link-text {
+  color: #e5e7eb;
+  font-size: 18px;
+}
+
+.header-logo-text {
+  font-size: 24px;
+  color: #f9faf8
+}
