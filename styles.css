@@ -1,5 +1,65 @@
+body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: #000;
+}
+
+.hero,
+.body-section-1,
+.body-section-2,
+.body-section-3,
+.footer {
+  padding-left: 100px;
+  padding-right: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
 .hero {
   background-color: #1F2937;
+}
+
+.hero .header,
+.hero .body {
+  display: flex;
+}
+
+.hero .body {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.hero .header-logo-text {
+  display: flex;
+  flex: 1;
+}
+
+.hero .header-link-text {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.hero .content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.hero .header-logo-text,
+.hero .link {
+  padding: 10px;
+}
+
+.hero .image {
+  display: flex;
+  flex: 1;
+  color: #f9faf8;
+  background-color: #8c95a6;
+  border: 3px solid green;
 }
 
 .hero-main-text {
@@ -16,5 +76,96 @@
 
 .header-logo-text {
   font-size: 24px;
-  color: #f9faf8
+  color: #f9faf8;
+}
+
+.body-section-1 {
+  display: flex;
+  background-color: #fff;
+  text-align: center;
+}
+
+.body-section-1 .information-header-text {
+  margin: 15px;
+}
+.body-section-1 .infographic {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+}
+
+.body-section-1 .info-pic-1,
+.body-section-1 .info-pic-2,
+.body-section-1 .info-pic-3,
+.body-section-1 .info-pic-4 {
+  display: flex;
+  flex: 1;
+  height: 100px;
+  width: 100px;
+  border: 3px solid #3882f6;
+  border-radius: 15px;
+  margin: auto;
+}
+
+.body-section-1 .info-text-1,
+.body-section-1 .info-text-2,
+.body-section-1 .info-text-3,
+.body-section-1 .info-text-4 {
+  display: flex;
+  flex: 1;
+  margin: 10px;
+  width: 130px;
+  text-align: justify;
+  text-align-last: center;
+}
+
+
+.body-section-2 {
+  display: flex;
+  background-color: #e5e7eb;
+  color: #1F2937;
+}
+
+.body-section-2 .quote-text {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 36px;
+}
+
+.body-section-2 .quote-name {
+  font-weight: 800;
+  text-align: right;
+  font-size: 24px;
+}
+
+.body-section-3 {
+  display: flex;
+  background-color: #fff;
+  color: #fff;
+}
+
+.body-section-3 .background {
+  background-color: #3882f6;
+  margin: 25px;
+}
+
+.footer {
+  display: flex;
+  background-color: #1F2937;
+  color:#fff;
+  text-align: center;
+}
+
+.information-header-text {
+  font-size: 36px;
+  font-weight: 800;
+  color: #1F2937;
+}
+
+button {
+  background-color: #3882f6;
+  color: #fff;
+  width: 100px;
+  height: 30px;
+  text-align: center;
 }
