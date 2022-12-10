@@ -1,81 +1,104 @@
 function getComputerChoice() {
+  let ComputerChoice = "";
   let ComputerValue = Math.floor(Math.random() * 3 + 1);
+
   if (ComputerValue == 1) {
-    ComputerChoice = "Rock";
-    console.log("Computer chose Rock");
+    ComputerChoice = "rock";
   } else if (ComputerValue == 2) {
-    ComputerChoice = "Scissors";
-    console.log("Computer chose Scissors");
+    ComputerChoice = "paper";
   } else if (ComputerValue == 3) {
-    ComputerChoice = "Paper";
-    console.log("Computer chose Paper");
+    ComputerChoice = "scissors";
   }
   return ComputerChoice;
 }
 
-function playRound(UserChoice, ComputerChoice) {
-  if (ComputerChoice === "Rock") {
-    if (UserChoice === "Rock") {
+function playRound(UserChoice) {
+  ComputerChoice = getComputerChoice();
+
+  if (ComputerChoice === "rock") {
+    if (UserChoice === "rock") {
       result = "Tie! Both chose rock!";
-      console.log(result);
-    } else if (UserChoice === "Paper") {
+    } else if (UserChoice === "paper") {
       result = "You win! Paper beats rock!";
-      console.log(result);
-    } else if (UserChoice === "Scissors") {
+      userScore++;
+    } else if (UserChoice === "scissors") {
       result = "You Lose! Rock beats scissors!";
-      console.log(result);
+      compScore++;
     }
-  } else if (ComputerChoice === "Paper") {
-    if (UserChoice === "Rock") {
+  } else if (ComputerChoice === "paper") {
+    if (UserChoice === "rock") {
       result = "You Lose! Paper beats rock!";
-      console.log(result);
-    } else if (UserChoice === "Paper") {
+      compScore++;
+    } else if (UserChoice === "paper") {
       result = "Tie! Both chose Paper!";
-      console.log(result);
-    } else if (UserChoice === "Scissors") {
+    } else if (UserChoice === "scissors") {
       result = "You win! Scissors beats paper!";
-      console.log(result);
+      userScore++;
     }
-  } else if (ComputerChoice === "Scissors") {
-    if (UserChoice === "Rock") {
+  } else if (ComputerChoice === "scissors") {
+    if (UserChoice === "rock") {
       result = "You win! Rock beats Scissors!";
-      console.log(result);
-    } else if (UserChoice === "Paper") {
+      userScore++;
+    } else if (UserChoice === "paper") {
       result = "You Lose! Scissors beats paper!";
-      console.log(result);
-    } else if (UserChoice === "Scissors") {
+      compScore++;
+    } else if (UserChoice === "scissors") {
       result = "Tie! Both chose scissors!";
-      console.log(result);
     }
   }
+
+  if (userScore == 5) {
+    gameResult = "User wins!";
+  } else if (compScore == 5) {
+    gameResult = "Computer wins!";
+  }
+
+  const rps_ui = document.querySelector('body');
+  const RoundDisplay = document.createElement('div');
+  
+  RoundDisplay.innerHTML = "<div>Round " + round + "</div>" +
+    // "<div>You chose " + UserChoice + "</div>" +
+    // "<div>Computer chose " + ComputerChoice + "</div>" +
+    "<div>" + result + "</div>" +
+    "<div>User Score: " + userScore + "</div>" +
+    "<div>Computer Score: " + compScore + "</div>" +
+    "<div>" + gameResult + "</div>" +
+    "<br>";
+
+  rps_ui.appendChild(RoundDisplay);
+
+  if (userScore == 5 || compScore == 5) {
+    round = 0;
+    userScore = 0;
+    compScore = 0;
+    gameResult = "";
+  }
+
+  round++;
 }
 
 
 
 let UserChoice = "";
-let ComputerChoice = "";
+let gameResult = "";
+let round = 1;
+let userScore = 0;
+let compScore = 0;
 
 const rock_btn = document.querySelector('.rock-btn');
 rock_btn.addEventListener('click', () => {
   UserChoice = "rock";
-  console.log("You chose rock");
+  playRound(UserChoice);
 })
 
 const paper_btn = document.querySelector('.paper-btn');
 paper_btn.addEventListener('click', () => {
   UserChoice = "paper";
-  console.log("You chose paper");
+  playRound(UserChoice);
 })
 
 const scissors_btn = document.querySelector('.scissors-btn');
 scissors_btn.addEventListener('click', () => {
   UserChoice = "scissors";
-  console.log("You chose scissors");
+  playRound(UserChoice);
 })
-
-ComputerChoice = getComputerChoice();
-
-const play_btn = document.querySelector('.user-input-btns');
-play_btn.addEventListener('click', function() {
-  playRound(UserChoice, ComputerChoice);
-});
