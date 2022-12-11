@@ -19,8 +19,12 @@ div {
   border-width: 1px;
 }
 
-.display {
+#display {
   flex: 1;
+  align-items: center;
+  justify-content: right;
+  padding-right: 5%;
+  font-size: large;
 }
 
 .cont {
