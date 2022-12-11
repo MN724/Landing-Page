@@ -7,8 +7,16 @@ function loadGrid(gridUnits) {
   const doc = document.querySelector(':root');
   const container = document.querySelector("div.container");
   const frag = document.createDocumentFragment();
+  
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
 
-  for (var i = 0; i < 16; i++) {
+  if (gridUnits > 100) {
+    gridUnits = 100;
+  }
+  
+  for (var i = 0; i < gridUnits; i++) {
     const div = document.createElement("div");
     div.classList.add('grid-row');
     frag.appendChild(div);
@@ -18,7 +26,7 @@ function loadGrid(gridUnits) {
   const gridRows = document.querySelectorAll('.grid-row');
   gridRows.forEach((gridRow) => {
     const frag = document.createDocumentFragment();
-    for (var i = 0; i < 16; i++) {
+    for (var i = 0; i < gridUnits; i++) {
       const div = document.createElement("div");
       div.classList.add('grid-unit');
       frag.appendChild(div);
