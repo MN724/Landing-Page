@@ -1,0 +1,49 @@
+*,
+html {
+  margin: 0;
+  padding: 0;
+}
+div {
+  display: flex;
+}
+
+.calc,
+.num-cont,
+.op-cont {
+  flex-direction: column;
+}
+.calc {
+  width: 300px;
+  height: 400px;
+  border: solid;
+  border-width: 1px;
+}
+
+.display {
+  flex: 1;
+}
+
+.cont {
+  flex: 4;
+}
+
+.num-cont {
+  flex: 4;
+}
+
+.op-cont {
+  flex: 1;
+}
+
+.num-row {
+  flex: 1;
+}
+
+.num-btn,
+.op {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  border: solid;
+  border-width: 1px;
+}
