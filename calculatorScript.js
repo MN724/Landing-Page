@@ -73,8 +73,11 @@ const subDisp = document.getElementById('sub');
 const multDisp = document.getElementById('mult');
 const divDisp = document.getElementById('div');
 const evalDisp = document.getElementById('eval');
-
-const exp = [0, "+", 0];
+var opConfirm = "+";
+var ans = 0;
+var ans2 = 0;
+const exp = [0, "+", 0, 0];
+const exp2 = [0, "+", 0, 0];
 
 // var numArray = [];
 // var Numbers = [];
@@ -108,6 +111,7 @@ numButtons.forEach ((numButton, index) => {
     exp[2] += index.toString();
     exp[2] = Number(exp[2]);
     console.log(exp);
+    console.log(exp2);
     popDisplay(exp[2]);
   }
 })
@@ -160,35 +164,35 @@ numButtons.forEach ((numButton, index) => {
 clearDisp.onclick = () => [ans, numArray, num] = clear();
 addDisp.onclick = () => {
   ans = operate(exp[0], exp[1], exp[2]);
-  exp[0] = ans;
-  exp[1] = "+";
-  exp [2] = 0;
+  exp[3] = ans;
+  exp2[1] = "+";
   console.log(ans);
   console.log(exp);
+  console.log(exp2);
 }
 subDisp.onclick = () => {
   ans = operate(exp[0], exp[1], exp[2]);
-  exp[0] = ans;
-  exp[1] = "-";
-  exp [2] = 0;
+  exp[3] = ans;
+  exp2[1] = "-";
   console.log(ans);
   console.log(exp);
+  console.log(exp2);
 }
 multDisp.onclick = () => {
   ans = operate(exp[0], exp[1], exp[2]);
-  exp[0] = ans;
-  exp[1] = "*";
-  exp [2] = 0;
+  exp[3] = ans;
+  exp2[1] = "*";
   console.log(ans);
   console.log(exp);
+  console.log(exp2);
 }
 divDisp.onclick = () => {
   ans = operate(exp[0], exp[1], exp[2]);
-  exp[0] = ans;
-  exp[1] = "/";
-  exp [2] = 0;
+  exp[3] = ans;
+  exp2[1] = "/";
   console.log(ans);
   console.log(exp);
+  console.log(exp2);
 }
 evalDisp.onclick = () => {
   ans = operate(exp[0], exp[1], exp[2]);
