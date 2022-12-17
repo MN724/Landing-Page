@@ -47,12 +47,19 @@ function operate(a, op, b) {
 
 function popDisplay(ans) {
   const dispUpdate = document.getElementById('display');
-  dispUpdate.textContent = ans;
+  roundedAns = round(ans, 5);
+  dispUpdate.textContent = roundedAns;
+}
+
+function round(value, decimals) {
+  if (value < 1+'e-'+decimals && value > 0) {
+    return 0;
+  }
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
 var ans = 0;
 var num = 0;
-
 
 const zero = document.getElementById('0');
 const one = document.getElementById('1');
@@ -64,8 +71,9 @@ const six = document.getElementById('6');
 const seven = document.getElementById('7');
 const eight = document.getElementById('8');
 const nine = document.getElementById('9');
+const decimal = document.getElementById('dec');
 
-const numButtons = [zero, one, two, three, four, five, six, seven, eight, nine]
+const numButtons = [zero, one, two, three, four, five, six, seven, eight, nine];
 
 const clearDisp = document.getElementById('clear');
 const addDisp = document.getElementById('add');
@@ -73,139 +81,102 @@ const subDisp = document.getElementById('sub');
 const multDisp = document.getElementById('mult');
 const divDisp = document.getElementById('div');
 const evalDisp = document.getElementById('eval');
-var opConfirm = "+";
 var ans = 0;
-var ans2 = 0;
-const exp = [0, "+", 0, 0];
-const exp2 = [0, "+", 0, 0];
-
-// var numArray = [];
-// var Numbers = [];
-// var Operators = [];
-// var Answers = [];
-
-
-// function concateNum (numArray){
-//   var fullNum = '';
-//   numArray.forEach ((num) =>
-//   {
-//     fullNum = fullNum + num;
-//   });
-//   var fullNum = Number(fullNum);
-//   popDisplay(fullNum);
-//   return fullNum;
-// }
-
-one.onclick = () => {
-
-}
-two.onclick = () => {
-
-}
-three.onclick = () => {
-
-}
+const exp1 = [0, "+", ""];
+const exp2 = [0, "+", ""];
 
 numButtons.forEach ((numButton, index) => {
   numButton.onclick = () => {
-    exp[2] += index.toString();
-    exp[2] = Number(exp[2]);
-    console.log(exp);
+    exp1[0] = exp2[0];
+    exp1[1] = exp2[1];
+    exp1[2] = exp2[2];
+    exp1[2] += index.toString();
+    // exp1[2] = Number(exp1[2]);
+    exp2[0] = exp1[0];
+    exp2[1] = exp1[1];
+    exp2[2] = exp1[2];
+    console.log(exp1);
     console.log(exp2);
-    popDisplay(exp[2]);
+    popDisplay(exp1[2]);
   }
 })
 
-// one.onclick = () => {
-//   numArray.push(1);
-//   num = concateNum(numArray);
-// }
-// two.onclick = () => {
-//   numArray.push(2);
-//   num = concateNum(numArray);
-// }
-// three.onclick = () => {
-//   numArray.push(3);
-//   num = concateNum(numArray);
-// }
-// four.onclick = () => {
-//   numArray.push(4);
-//   num = concateNum(numArray);
-// }
-// five.onclick = () => {
-//   numArray.push(5);
-//   num = concateNum(numArray);
-// }
-// six.onclick = () => {
-//   numArray.push(6);
-//   num = concateNum(numArray);
-// }
-// seven.onclick = () => {
-//   numArray.push(7);
-//   num = concateNum(numArray);
-// }
-// eight.onclick = () => {
-//   numArray.push(8);
-//   num = concateNum(numArray);
-// }
-// nine.onclick = () => {
-//   numArray.push(9);
-//   num = concateNum(numArray);
-// }
-// zero.onclick = () => {
-//   numArray.push(0);
-//   num = concateNum(numArray);
-// }
-// dec.onclick = () => {
-//   numArray.push(".");
-//   num = concateNum(numArray);
-// }
+decimal.onclick = () => {
+  exp1[0] = exp2[0];
+  exp1[1] = exp2[1];
+  exp1[2] = exp2[2];
+  exp1[2] += ".";
+  exp2[0] = exp1[0];
+  exp2[1] = exp1[1];
+  exp2[2] = exp1[2];
+  console.log(exp1);
+  console.log(exp2);
+  popDisplay(exp1[2]);
+}
 
-clearDisp.onclick = () => [ans, numArray, num] = clear();
 addDisp.onclick = () => {
-  ans = operate(exp[0], exp[1], exp[2]);
-  exp[3] = ans;
+  exp1[2] = Number(exp1[2]);
+  ans = operate(exp1[0], exp1[1], exp1[2]);
+  exp2[0] = ans;
   exp2[1] = "+";
+  exp2[2] = "";
   console.log(ans);
-  console.log(exp);
+  console.log(exp1);
   console.log(exp2);
 }
 subDisp.onclick = () => {
-  ans = operate(exp[0], exp[1], exp[2]);
-  exp[3] = ans;
+  exp1[2] = Number(exp1[2]);
+  ans = operate(exp1[0], exp1[1], exp1[2]);
+  exp2[0] = ans;
   exp2[1] = "-";
+  exp2[2] = "";
   console.log(ans);
-  console.log(exp);
+  console.log(exp1);
   console.log(exp2);
 }
 multDisp.onclick = () => {
-  ans = operate(exp[0], exp[1], exp[2]);
-  exp[3] = ans;
+  exp1[2] = Number(exp1[2]);
+  ans = operate(exp1[0], exp1[1], exp1[2]);
+  exp2[0] = ans;
   exp2[1] = "*";
+  exp2[2] = "";
   console.log(ans);
-  console.log(exp);
+  console.log(exp1);
   console.log(exp2);
 }
 divDisp.onclick = () => {
-  ans = operate(exp[0], exp[1], exp[2]);
-  exp[3] = ans;
+  exp1[2] = Number(exp1[2]);
+  ans = operate(exp1[0], exp1[1], exp1[2]);
+  exp2[0] = ans;
   exp2[1] = "/";
+  exp2[2] = "";
   console.log(ans);
-  console.log(exp);
+  console.log(exp1);
   console.log(exp2);
 }
 evalDisp.onclick = () => {
-  ans = operate(exp[0], exp[1], exp[2]);
-  exp[0] = ans;
-  exp[1] = "=";
-  exp [2] = 0;
+  exp1[2] = Number(exp1[2]);
+  ans = operate(exp1[0], exp1[1], exp1[2]);
+  exp2[0] = ans;
+  exp1[0] = exp2[0];
+  exp2[0] = "";
+  exp2[1] = "+";
+  exp2[2] = "";
   console.log(ans);
-  console.log(exp);
+  console.log(exp1);
+  console.log(exp2);
 }
 
 clearDisp.onclick = () => {
-  exp[0] = 0;
-  exp[1] = "+";
-  exp [2] = 0;
-  popDisplay(0);
+  ans = 0;
+  exp1[0] = "";
+  exp1[1] = "+";
+  exp1[2] = "";
+  exp2[0] = "";
+  exp2[1] = "+";
+  exp2[2] = "";
+  console.log(ans);
+  console.log(exp1);
+  console.log(exp2);
+  popDisplay(ans);
 }
